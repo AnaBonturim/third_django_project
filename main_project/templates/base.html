@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/logo.ico' %}" />
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/header.css' %}" />
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <img id="logo-img" src="{% static 'images/logo.svg' %}" />
+        </nav>
+    </header>
+    {% block content %}<h1>Olá</h1>{% endblock %}
+</body>
+</html>
