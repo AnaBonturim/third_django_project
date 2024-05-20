@@ -6,17 +6,11 @@
 {% endblock %}
 
 {% block title %}
-    Blog
+    All Posts
 {% endblock %}
 
 {% block content %}
-    <article id="welcome-block">
-        <h1>Welcome to your Blog!</h1>
-    </article>
-
-    <article>
-        {% for post in post_list %}
-            <p>{{ post.title }}</p>
-        {% endfor %}
-    </article>
+    {% for post in post_list %}
+        <p>{{ post.title }}</p>
+    {% endfor %}
 {% endblock %}

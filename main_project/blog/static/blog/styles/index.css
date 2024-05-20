@@ -1,0 +1,9 @@
+article {
+    width: 100%;
+    margin: 0.5rem auto;
+}
+
+#welcome-block {
+    color: #53a58a;
+    text-align: center;
+}

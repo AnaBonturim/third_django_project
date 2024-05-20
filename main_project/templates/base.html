@@ -11,12 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/header.css' %}" />
+    {% block style_links %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav>
-            <img id="logo-img" src="{% static 'images/logo.svg' %}" />
+            <a href="{% url 'blog-home' %}"><img id="logo-img" src="{% static 'images/logo.svg' %}" /></a>
         </nav>
     </header>
     {% block content %}<h1>Olá</h1>{% endblock %}
