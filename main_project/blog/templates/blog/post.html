@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style_links %}
+    <link rel="stylesheet" href="{% static 'blog/styles/post.css' %}" />
+{% endblock %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <h3>{{ post_text }}</h3>
+{% endblock %}
