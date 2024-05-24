@@ -15,9 +15,13 @@
     </article>
 
     <article>
-        {% for post in post_list %}
-            <a href="{% url 'post' post.slug %}"><h2>{{ post.title }}</h2></a>
-            <p>{{ post.preview }}</p>
-        {% endfor %}
+        <ul>
+            {% for post in post_list %}
+                <li>
+                    <a href="{% url 'post' post.slug %}"><h2>{{ post.title }}</h2></a>
+                    <p>{{ post.preview }}</p>
+                </li>
+            {% endfor %}
+        </ul>
     </article>
 {% endblock %}

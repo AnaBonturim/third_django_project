@@ -3,6 +3,30 @@ article {
     margin: 0.5rem auto;
 }
 
+li {
+
+    list-style: none;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 30rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    border-radius: 12px;
+    height: 10rem;
+    background-color: #fff;
+}
+
+li a {
+    text-decoration: none;
+    color: #000;
+}
+
+li a:hover,
+li a:active {
+    color: #53a58a;
+    font-weight: bold;
+}
+
 #welcome-block {
     color: #53a58a;
     text-align: center;
