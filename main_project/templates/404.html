@@ -3,7 +3,7 @@
 
 
 {% block style_links %}
-    <link rel="stylesheet" href="{% static 'blog/styles/post.css' %}" />
+    <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -11,6 +11,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <h3> {{ msg }}</h3>
+    <article class="error">
+        <h1 class="error-title">{{ title }}</h1>
+        <p>{{ msg }}</p>
+    </article>
 {% endblock %}

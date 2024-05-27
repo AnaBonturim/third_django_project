@@ -27,6 +27,18 @@ li a:active {
     font-weight: bold;
 }
 
+.full-post {
+    padding: 1rem;
+}
+
+.error {
+    padding: 1rem;
+}
+
+.error-title {
+    color: rgb(167, 28, 28);
+}
+ 
 #welcome-block {
     color: #53a58a;
     text-align: center;

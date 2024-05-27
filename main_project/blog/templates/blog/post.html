@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style_links %}
-    <link rel="stylesheet" href="{% static 'blog/styles/post.css' %}" />
+    <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -10,6 +10,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <p>{{ post_text }}</p>
+    <article class="full-post">
+        <h1>{{ title }}</h1>
+        <p>{{ post_text }}</p>
+    </article>
 {% endblock %}
