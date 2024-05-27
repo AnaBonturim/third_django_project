@@ -10,7 +10,8 @@
 {% endblock %}
 
 {% block content %}
-    <article>
+    <section class="post-list">
+        <h1>All Posts</h1>
         <ul>
             {% for post in post_list %}
                 <li>
@@ -19,5 +20,5 @@
                 </li>
             {% endfor %}
         </ul>
-    </article>
+    </section>
 {% endblock %}

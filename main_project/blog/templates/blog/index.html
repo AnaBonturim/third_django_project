@@ -10,18 +10,34 @@
 {% endblock %}
 
 {% block content %}
-    <article id="welcome-block">
-        <h1>Welcome to your Blog!</h1>
-    </article>
+    <section id="welcome-block">
+        <header>
+            <h1>Welcome to Bololog!</h1>
+        </header>
+        <p>Hi, I am Me and this is just a test blog.</p>
+    </section>
 
-    <article>
+    <hr>
+
+    <section class="post-list">
+        <h1>Latest Posts</h1>
+
         <ul>
             {% for post in post_list %}
                 <li>
-                    <a href="{% url 'post' post.slug %}"><h2>{{ post.title }}</h2></a>
-                    <p>{{ post.preview }}</p>
+                    <article class="post">
+                        <a href="{% url 'post' post.slug %}"><h2>{{ post.title }}</h2></a>
+                        <p>{{ post.preview }}</p>
+                    </article>
                 </li>
             {% endfor %}
         </ul>
-    </article>
+    </section>
+
+    <hr>
+
+    <section id="about">
+        <h2>What I Do</h2>
+        <p>I do Nothing.</p>
+    </section>
 {% endblock %}

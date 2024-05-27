@@ -1,4 +1,9 @@
-article {
+hr {
+    border-color: #00000042;
+    border-style: dashed;
+}
+
+section {
     width: 100%;
     margin: 0.5rem auto;
 }
@@ -9,7 +14,7 @@ li {
     margin: 2rem auto;
     width: 90%;
     max-width: 30rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 8px #00000042;
     padding: 1rem;
     border-radius: 12px;
     height: 10rem;
@@ -39,7 +44,26 @@ li a:active {
     color: rgb(167, 28, 28);
 }
  
+.post-list h1 {
+    text-align: center;
+}
+
 #welcome-block {
     color: #53a58a;
     text-align: center;
+    padding: 0.5rem 0;
+}
+
+#welcome-block h1 {
+    font-size: 2rem;
+}
+
+#welcome-block p {
+    font-style: italic;
+}
+
+#about {
+    color: #53a58a;
+    text-align: center;
+    padding: 0.5rem 0;
 }
