@@ -24,20 +24,13 @@
 
         <ul>
             {% for post in post_list %}
-                <li>
-                    <article class="post">
-                        <a href="{% url 'post' post.slug %}"><h2>{{ post.title }}</h2></a>
-                        <p>{{ post.preview }}</p>
-                    </article>
-                </li>
+                {% include 'blog/includes/post_preview.html' %}
             {% endfor %}
         </ul>
     </section>
 
-    <hr>
-
     <section id="about">
-        <h2>What I Do</h2>
-        <p>I do Nothing.</p>
+        <h2>About Me</h2>
+        <p>I have nothing to say about me.</p>
     </section>
 {% endblock %}

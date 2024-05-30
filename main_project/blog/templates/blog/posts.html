@@ -14,10 +14,7 @@
         <h1>All Posts</h1>
         <ul>
             {% for post in post_list %}
-                <li>
-                    <a href="{% url 'post' post.slug %}"><h2>{{ post.title }}</h2></a>
-                    <p>{{ post.preview }}</p>
-                </li>
+                {% include 'blog/includes/post_preview.html' %}
             {% endfor %}
         </ul>
     </section>

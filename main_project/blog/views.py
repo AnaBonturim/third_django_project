@@ -1,27 +1,31 @@
+from datetime import date
+
 from django.shortcuts import render
 
 # Create your views here.
 
 
-post_collection = {
-    'first-post': {'slug': 'first-post', 'title': 'First Post', 'post_text': 'Hello! This is a first post. :P Pretty lame.'},
-    'the-real-one': {'slug': 'the-real-one', 'title': 'The Real One', 'post_text': 'Now that I created a stupid first post, let\'s go write something real fun like...I need to think about it.'},
-    'xweet': {'slug': 'xweet', 'title': 'Xweet?', 'post_text': 'I\'m kind of treating this as a tweet. Don\' feel like writing too much.'},
-    'junk-food': {'slug': 'junk-food', 'title': 'Junk Food', 'post_text': 'I know taht if I\'m really hungry, I crave Mac Donald\'s.'},
-    'sleepy-me': {'slug': 'sleepy-me', 'title': 'Sleepy Me', 'post_text': 'You know when you are tired but denied to do something about it? That\'s me.'},
-    'keep-posting': {'slug': 'keep-posting', 'title': 'Keep Posting!', 'post_text': 'I need to create a few more posts to make this look good. So, here I am. Writing stupid stuff in a blog.'}
-}
+post_collection = [
+    {'author': 'Me', 'date': date(2024, 3, 20), 'image': 'token.svg', 'slug': 'first-post', 'title': 'First Post', 'post_text': 'Hello! This is a first post. :P Pretty lame.'},
+    {'author': 'Me', 'date': date(2024, 3, 21), 'image': 'sort_by_alpha.svg', 'slug': 'the-real-one', 'title': 'The Real One', 'post_text': 'Now that I created a stupid first post, let\'s go write something real fun like...I need to think about it.'},
+    {'author': 'Another Me', 'date': date(2024, 3, 23), 'image': 'rule_settings.svg', 'slug': 'xweet', 'title': 'Xweet?', 'post_text': 'I\'m kind of treating this as a tweet. Don\' feel like writing too much.'},
+    {'author': 'Me', 'date': date(2024, 3, 26), 'image': 'settings_heart.svg', 'slug': 'junk-food', 'title': 'Junk Food', 'post_text': 'I know that if I\'m really hungry, I crave Mac Donald\'s.'},
+    {'author': 'Mi miself', 'date': date(2024, 3, 24), 'image': 'settings_app.svg', 'slug': 'sleepy-me', 'title': 'Sleepy Me', 'post_text': 'You know when you are tired but denied to do something about it? That\'s me.'},
+    {'author': 'Me', 'date': date(2024, 3, 25), 'image': 'bottom_app_bar.svg', 'slug': 'keep-posting', 'title': 'Keep Posting!', 'post_text': 'I need to create a few more posts to make this look good. So, here I am. Writing stupid stuff in a blog.'}
+]
+
+
+def get_date(post):
+    return post['date']
+
 
 def index(request):
     post_list = []
     
-    posts = list(post_collection.values())
-
-    last = len(posts) - 1
-    first = max(last - 3, 0)
-
-    for index in range(last, first, -1):
-        post = posts[index]
+    sorted_posts = sorted(post_collection, key=get_date, reverse=True)
+    lastest_posts = sorted_posts[:3]
+    
+    for post in lastest_posts:
         post_list.append(create_post_render(post))
     
     if post_list:
@@ -37,9 +41,9 @@ def index(request):
 def posts(request):
     post_list = []
 
-    posts = list(post_collection.values())
+    sorted_posts = sorted(post_collection, key=get_date, reverse=True)
     
-    for post in reversed(posts):
+    for post in sorted_posts:
         post_list.append(create_post_render(post))
     
     if post_list:
@@ -54,9 +58,9 @@ def posts(request):
     
 def post(request, slug_post):
     
-    required_post = post_collection.get(slug_post, None)
-    
-    if (required_post is None):
+    try:
+        required_post = next(post for post in post_collection if post['slug'] == slug_post)
+    except:
         return render(request, '404.html', {
             'title': 'Not Found! D:',
             'msg': 'Post not found!'
@@ -71,6 +75,9 @@ def create_post_render(post):
         'slug': post['slug'],
         'title': post['title'],
         'post_text': post['post_text'],
+        'image': post['image'],
+        'author': post['author'],
+        'date': post['date'],
         'preview': preview
     }
     

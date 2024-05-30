@@ -3,33 +3,46 @@ hr {
     border-style: dashed;
 }
 
-section {
-    width: 100%;
-    margin: 0.5rem auto;
+li {
+    list-style: none;
 }
 
-li {
-
-    list-style: none;
+.post {
     margin: 2rem auto;
     width: 90%;
     max-width: 30rem;
     box-shadow: 0 2px 8px #00000042;
     padding: 1rem;
     border-radius: 12px;
-    height: 10rem;
+    height: 17rem;
     background-color: #fff;
 }
 
-li a {
-    text-decoration: none;
-    color: #000;
+.post-title {
+    text-align: center;
 }
 
-li a:hover,
-li a:active {
+.post-title a {
+    text-decoration: none;
     color: #53a58a;
+}
+
+.post-title a:hover,
+.post-title a:active {
+    color: #1a5844;
     font-weight: bold;
+}
+
+.post-time {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #53a58a;
+}
+
+.post-address {
+    font-size: 0.75rem;
+    font-style: bold;
 }
 
 .full-post {
@@ -48,6 +61,35 @@ li a:active {
     text-align: center;
 }
 
+.post-avatar {
+    width: 6rem;
+    height: 6rem;.
+}
+
+.post-preview-avatar {
+    padding-top: 1rem;
+    width: 3rem;
+    height: 3rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.post-preview-time {
+    margin-top: 1.5rem;
+    font-size: 0.65rem;
+    font-style: italic;
+    color: #53a58a;
+}
+
+.post-preview-address {
+    font-size: 0.65rem;
+    font-style: bold;
+}
+
+.post-preview {
+    padding-top: 1rem;
+}
+
 #welcome-block {
     color: #53a58a;
     text-align: center;
@@ -63,7 +105,13 @@ li a:active {
 }
 
 #about {
-    color: #53a58a;
+    color: #856b47;
     text-align: center;
     padding: 0.5rem 0;
+    background-color: #fff5e7;
+    border-top:#856b47 dashed 1px;
+}
+
+#about h2 {
+    color:#856b47;
 }

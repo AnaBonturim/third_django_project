@@ -12,6 +12,9 @@
 {% block content %}
     <section class="full-post">
         <h1>{{ title }}</h1>
-        <p>{{ post_text }}</p>
+        <img class="post-avatar" src="{% static "blog/images/"|add:image %}" alt="{{ title }}"/>
+        <p>{{ post_text|linebreaks }}</p>
+        <div class="post-time">Last updated on <time>{{ date|date:"l, d F Y" }}</time></div>
+        <address class="post-address">By {{ author }}</address>
     </section>
 {% endblock %}
