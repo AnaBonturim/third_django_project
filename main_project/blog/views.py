@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.shortcuts import render
+from blog.models import Author, Post
 
 # Create your views here.
 
@@ -22,11 +23,13 @@ def get_date(post):
 def index(request):
     post_list = []
     
-    sorted_posts = sorted(post_collection, key=get_date, reverse=True)
-    lastest_posts = sorted_posts[:3]
+    # sorted_posts = sorted(post_collection, key=get_date, reverse=True)
+    # lastest_posts = sorted_posts[:3]
     
-    for post in lastest_posts:
-        post_list.append(create_post_render(post))
+    # for post in lastest_posts:
+    #     post_list.append(create_post_render(post))
+    
+    post_list = Post.objects.all()
     
     if post_list:
         return render(request, 'blog/index.html', {
