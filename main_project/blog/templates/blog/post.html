@@ -6,15 +6,16 @@
 {% endblock %}
 
 {% block title %}
-    {{ title }}
+    {{ post.title }}
 {% endblock %}
 
 {% block content %}
     <section class="full-post">
-        <h1>{{ title }}</h1>
-        <img class="post-avatar" src="{% static "blog/images/"|add:image %}" alt="{{ title }}"/>
-        <p>{{ post_text|linebreaks }}</p>
-        <div class="post-time">Last updated on <time>{{ date|date:"l, d F Y" }}</time></div>
-        <address class="post-address">By {{ author }}</address>
+        <h1>{{ post.title }}</h1>
+        <img class="post-avatar" src="{{ post.image.url }}" alt="{{ post.title }}"/>
+        <p class="excerpt">{{ post.excerpt }}</p>
+        <p>{{ post.content }}</p>
+        <div class="post-time">Last updated on <time>{{ post.date|date:"l, d F Y" }}</time></div>
+        <address class="post-address">By {{ post.author.full_name }}</address>
     </section>
 {% endblock %}

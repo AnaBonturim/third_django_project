@@ -1,6 +1,6 @@
 from datetime import date
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from blog.models import Author, Post
 
 # Create your views here.
@@ -29,7 +29,11 @@ def index(request):
     # for post in lastest_posts:
     #     post_list.append(create_post_render(post))
     
-    post_list = Post.objects.all()
+    # Django faz o slice do QuerySet no SQL, então essa expressão abaixo é eficiente
+    post_list = Post.objects.all().order_by("-date")[:3]
+    
+    # last_post = min(len(post_list), 3)
+    # post_list = post_list[:last_post]
     
     if post_list:
         return render(request, 'blog/index.html', {
@@ -42,12 +46,12 @@ def index(request):
     }, status=404)
 
 def posts(request):
-    post_list = []
+    post_list = Post.objects.all().order_by("-date")
 
-    sorted_posts = sorted(post_collection, key=get_date, reverse=True)
+    # sorted_posts = sorted(post_collection, key=get_date, reverse=True)
     
-    for post in sorted_posts:
-        post_list.append(create_post_render(post))
+    # for post in sorted_posts:
+    #     post_list.append(create_post_render(post))
     
     if post_list:
         return render(request, 'blog/posts.html', {
@@ -61,35 +65,40 @@ def posts(request):
     
 def post(request, slug_post):
     
-    try:
-        required_post = next(post for post in post_collection if post['slug'] == slug_post)
-    except:
-        return render(request, '404.html', {
-            'title': 'Not Found! D:',
-            'msg': 'Post not found!'
-        }, status=404)
+    # try:
+        # required_post = next(post for post in post_collection if post['slug'] == slug_post)
+    # except:
+    #     return render(request, '404.html', {
+    #         'title': 'Not Found! D:',
+    #         'msg': 'Post not found!'
+    #     }, status=404)
 
-    return render(request, 'blog/post.html', create_post_render(required_post))
+    # return render(request, 'blog/post.html', create_post_render(required_post))
     
-def create_post_render(post):
-    preview = create_preview(post['post_text'])
+    required_post = get_object_or_404(Post, slug=slug_post)
+    return render(request, 'blog/post.html', {
+        'post': required_post
+    })
     
-    return {
-        'slug': post['slug'],
-        'title': post['title'],
-        'post_text': post['post_text'],
-        'image': post['image'],
-        'author': post['author'],
-        'date': post['date'],
-        'preview': preview
-    }
+# def create_post_render(post):
+#     preview = create_preview(post['post_text'])
     
-def create_preview(text):
+#     return {
+#         'slug': post['slug'],
+#         'title': post['title'],
+#         'post_text': post['post_text'],
+#         'image': post['image'],
+#         'author': post['author'],
+#         'date': post['date'],
+#         'preview': preview
+#     }
     
-    min_char = min(len(text), 6)
-    split_list = text.split()[:min_char]
+# def create_preview(text):
     
-    if split_list:
-        return ' '.join(split_list) + '...'
+#     min_char = min(len(text), 6)
+#     split_list = text.split()[:min_char]
     
-    return ''
+#     if split_list:
+#         return ' '.join(split_list) + '...'
+    
+#     return ''

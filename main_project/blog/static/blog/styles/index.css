@@ -56,6 +56,12 @@ li {
 .error-title {
     color: rgb(167, 28, 28);
 }
+
+.excerpt {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #53a58a;
+}
  
 .post-list h1 {
     text-align: center;
@@ -63,14 +69,15 @@ li {
 
 .post-avatar {
     width: 6rem;
-    height: 6rem;.
+    height: 6rem;
 }
 
 .post-preview-avatar {
-    padding-top: 1rem;
-    width: 3rem;
-    height: 3rem;
-    width: 100%;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 3rem;
+    max-height: 3rem;
     margin: 0 auto;
 }
 
