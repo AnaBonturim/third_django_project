@@ -23,18 +23,9 @@ def get_date(post):
 def index(request):
     post_list = []
     
-    # sorted_posts = sorted(post_collection, key=get_date, reverse=True)
-    # lastest_posts = sorted_posts[:3]
-    
-    # for post in lastest_posts:
-    #     post_list.append(create_post_render(post))
-    
     # Django faz o slice do QuerySet no SQL, então essa expressão abaixo é eficiente
     post_list = Post.objects.all().order_by("-date")[:3]
-    
-    # last_post = min(len(post_list), 3)
-    # post_list = post_list[:last_post]
-    
+
     if post_list:
         return render(request, 'blog/index.html', {
             'post_list': post_list
@@ -47,11 +38,6 @@ def index(request):
 
 def posts(request):
     post_list = Post.objects.all().order_by("-date")
-
-    # sorted_posts = sorted(post_collection, key=get_date, reverse=True)
-    
-    # for post in sorted_posts:
-    #     post_list.append(create_post_render(post))
     
     if post_list:
         return render(request, 'blog/posts.html', {
@@ -64,41 +50,9 @@ def posts(request):
     }, status=404)
     
 def post(request, slug_post):
-    
-    # try:
-        # required_post = next(post for post in post_collection if post['slug'] == slug_post)
-    # except:
-    #     return render(request, '404.html', {
-    #         'title': 'Not Found! D:',
-    #         'msg': 'Post not found!'
-    #     }, status=404)
-
-    # return render(request, 'blog/post.html', create_post_render(required_post))
-    
     required_post = get_object_or_404(Post, slug=slug_post)
+    
     return render(request, 'blog/post.html', {
-        'post': required_post
+        'post': required_post,
+        'post_tags': required_post.tags.all()
     })
-    
-# def create_post_render(post):
-#     preview = create_preview(post['post_text'])
-    
-#     return {
-#         'slug': post['slug'],
-#         'title': post['title'],
-#         'post_text': post['post_text'],
-#         'image': post['image'],
-#         'author': post['author'],
-#         'date': post['date'],
-#         'preview': preview
-#     }
-    
-# def create_preview(text):
-    
-#     min_char = min(len(text), 6)
-#     split_list = text.split()[:min_char]
-    
-#     if split_list:
-#         return ' '.join(split_list) + '...'
-    
-#     return ''

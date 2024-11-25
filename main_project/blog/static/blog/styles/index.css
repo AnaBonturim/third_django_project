@@ -97,6 +97,18 @@ li {
     padding-top: 1rem;
 }
 
+.post-tags {
+    padding: 0.25em 0;
+    font-size: 0.65rem;
+}
+
+span.tag-span {
+    background-color: #b0e6d477;
+    padding: 0.2em;
+    margin: 0 0.2em;
+    border-radius: 0.3em;
+}
+
 #welcome-block {
     color: #53a58a;
     text-align: center;

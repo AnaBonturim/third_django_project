@@ -31,3 +31,9 @@ class Post(models.Model):
     
     def __str__(self):
         return f"{self.title} ({self.author})"
+    
+    def tags_as_list(self):
+        return self.tags.all()
+    
+    def has_tags(self):
+        return len(self.tags_as_list()) > 0
