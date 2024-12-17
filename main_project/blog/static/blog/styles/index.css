@@ -1,6 +1,10 @@
+body {
+    background-color: #f6fffc;
+}
+
 hr {
-    border-color: #00000042;
-    border-style: dashed;
+    border: 0px;
+    border-bottom: 1px dashed #1a58446b;
 }
 
 li {
