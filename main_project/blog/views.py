@@ -1,9 +1,14 @@
 from datetime import date
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from blog.models import Author, Post
+from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+
+from .forms import CommentForm
 
 # Create your views here.
 
@@ -22,10 +27,13 @@ class LastPostsView(ListView):
     template_name = 'blog/index.html'
     model = Post
     context_object_name = 'post_list'
+    ordering = ['-date']
     
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.order_by('-date')[:3]
+        data = queryset[:3]
+        
+        return data
 
 
 class AllPostsView(ListView):
@@ -37,17 +45,34 @@ class AllPostsView(ListView):
         queryset = super().get_queryset()
         return queryset.order_by('-date')
 
-class PostView(DetailView):
-    template_name = 'blog/post.html'
-    model = Post
-    context_object_name = 'post'
+class PostView(View):
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["post_tags"] = context['object'].tags.all()
+    def get(self, request, slug):
+        post = Post.objects.get(slug=slug)
         
-        return context
-    
+        return render(request, 'blog/post.html', {
+            'comment_form': CommentForm(),
+            'post': post,
+            'post_tags': post.tags.all()
+        })
+        
+    def post(self, request, slug):
+        comment_form = CommentForm(request.POST)
+        post = Post.objects.get(slug=slug)
+        
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+            
+            return HttpResponseRedirect(reverse('post', args=[slug]))
+        
+        return render(request, 'blog/post.html', {
+            'comment_form': comment_form,
+            'post': post,
+            'post_tags': post.tags.all()
+        })
+
 # def index(request):
 #     post_list = []
     

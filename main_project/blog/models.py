@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -37,3 +38,13 @@ class Post(models.Model):
     
     def has_tags(self):
         return len(self.tags_as_list()) > 0
+ 
+    
+class Comment(models.Model):
+    content = models.TextField(blank=False, max_length=400)
+    name = models.CharField(max_length=200, blank=False)
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    
+    def __str__(self):
+        return f"{self.content} ({self.name} with rating {self.rating})"
