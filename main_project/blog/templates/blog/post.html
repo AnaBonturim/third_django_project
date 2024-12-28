@@ -10,6 +10,15 @@
 {% endblock %}
 
 {% block content %}
+
+    {% if comment_form.errors %}
+        <div class="error-box">
+            <h2>Saving the comment failed!</h2>
+            <p>Please check bellow the reason why the comment couldn't be saved. :(</p>
+            <a href="#comment-form">Fix!</a>
+        </div>
+    {% endif %}
+
     <section class="full-post">
         <h1>{{ post.title }}</h1>
         <img class="post-avatar" src="{{ post.image.url }}" alt="{{ post.title }}"/>
@@ -29,10 +38,10 @@
 
     <section class="comment-section">
         <h2>Your Comment</h2>
-        <form action="{% url 'post' post.slug %}" method="POST">
+        <form id="comment-form" action="{% url 'post' post.slug %}" method="POST">
             {% csrf_token %}
             {% for field in comment_form %}
-                <div class="form-control {% if field.errors %}errors{% endif %}">
+                <div class="form-control {% if field.errors %}error-form{% endif %}">
                     {{ field.label_tag }}
                     {{ field }}
                     {{ field.errors}}
