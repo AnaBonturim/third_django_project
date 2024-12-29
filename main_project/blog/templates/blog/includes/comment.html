@@ -1,0 +1,5 @@
+<h2>{{ comment.name }}</h2>
+<p>{{ comment.content|linebreaks }}</p>
+{% for i in comment.get_rating_range %}
+    <span>&#x2B50;</span>
+{% endfor %}

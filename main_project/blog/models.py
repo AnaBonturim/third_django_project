@@ -48,3 +48,6 @@ class Comment(models.Model):
     
     def __str__(self):
         return f"{self.content} ({self.name} with rating {self.rating})"
+    
+    def get_rating_range(self):
+        return [ '#' for index in range(0,self.rating)]

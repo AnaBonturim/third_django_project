@@ -11,15 +11,19 @@ li {
     list-style: none;
 }
 
-.post {
+.box-light {
     margin: 2rem auto;
     width: 90%;
     max-width: 30rem;
     box-shadow: 0 2px 8px #00000042;
     padding: 1rem;
     border-radius: 12px;
-    height: 17rem;
+    /* height: 17rem; */
     background-color: #fff;
+}
+
+.post {
+    max-width: 50rem;
 }
 
 .post-title {
@@ -96,6 +100,10 @@ li {
 .post-tags {
     padding: 0.25em 0;
     font-size: 0.65rem;
+}
+
+.center-me {
+    text-align: center;
 }
 
 button {

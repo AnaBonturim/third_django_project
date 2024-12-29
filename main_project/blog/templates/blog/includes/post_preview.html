@@ -1,7 +1,7 @@
 {% load static %}
 
 <li>
-    <article class="post">
+    <article class="box-light post">
         <h2 class="post-title"><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h2>
         <img class="post-preview-avatar" src="{{ post.image.url }}" alt="{{ post.title }}" />
         <p class="post-preview">{{ post.excerpt }}</p>

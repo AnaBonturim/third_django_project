@@ -19,7 +19,7 @@
         </div>
     {% endif %}
 
-    <section class="full-post">
+    <section class="box-light post full-post">
         <h1>{{ post.title }}</h1>
         <img class="post-avatar" src="{{ post.image.url }}" alt="{{ post.title }}"/>
         <p class="excerpt">{{ post.excerpt }}</p>
@@ -36,18 +36,36 @@
 
     <hr>
 
-    <section class="comment-section">
-        <h2>Your Comment</h2>
-        <form id="comment-form" action="{% url 'post' post.slug %}" method="POST">
-            {% csrf_token %}
-            {% for field in comment_form %}
-                <div class="form-control {% if field.errors %}error-form{% endif %}">
-                    {{ field.label_tag }}
-                    {{ field }}
-                    {{ field.errors}}
+    <section class="post-list">
+        <h1>Your Comment</h1>
+        <div class="box-light"> 
+            <form id="comment-form" action="{% url 'post' post.slug %}" method="POST">
+                {% csrf_token %}
+                {% for field in comment_form %}
+                    <div class="form-control {% if field.errors %}error-form{% endif %}">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {{ field.errors}}
+                    </div>
+                {% endfor %}
+                <button>Comment</button>
+            </form>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="post-list">
+        <h1>All Comments</h1>
+        
+        {% if comment_list %}
+            {% for comment in comment_list %}
+                <div class="box-light">
+                    {% include 'blog/includes/comment.html' with comment=comment %}
                 </div>
             {% endfor %}
-            <button>Comment</button>
-        </form>
+        {% else %}
+            <p class="center-me">No comments yet. :(</p>
+        {% endif %}
     </section>
 {% endblock %}
