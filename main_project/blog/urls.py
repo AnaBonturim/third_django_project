@@ -21,5 +21,8 @@ from . import views
 urlpatterns = [
     path('', views.LastPostsView.as_view(), name='blog-home'),
     path('posts/', views.AllPostsView.as_view(), name='all-posts'),
-    path('posts/<slug:slug>', views.PostView.as_view(), name='post')
+    path('posts/<slug:slug>', views.PostView.as_view(), name='post'),
+    path('read-later', views.ReadLaterPostView.as_view(), name='read-later'),
+    path('read-later/<int:id>', views.RemoveReadLaterView.as_view(), name='read-later-delete'),
+    path('comments/', views.AllCommentsView.as_view(), name='all-comments')
 ]

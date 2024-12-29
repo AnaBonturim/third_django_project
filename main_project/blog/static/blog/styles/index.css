@@ -11,6 +11,7 @@ li {
     list-style: none;
 }
 
+
 .box-light {
     margin: 2rem auto;
     width: 90%;
@@ -106,19 +107,35 @@ li {
     text-align: center;
 }
 
-button {
+.button-primary {
     cursor: pointer;
     padding: 0.5rem 1.5rem;
     margin-top: 1rem;
-    border-radius: 12px;
+    border-radius: 10px;
     background-color: #3e9979;
     color: #fff;
     border: 0px;
 }
 
-button:hover,
-button:active {
+.button-primary:hover,
+.button-primary:active {
     background-color: #2e6e58;
+}
+
+.button-secondary {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #2e6e58;
+    border: 1px solid #2e6e58;
+}
+
+.button-secondary:hover,
+.button-secondary:active {
+    background-color: #2e6e58;
+    color: #fff;
 }
 
 .form-control {

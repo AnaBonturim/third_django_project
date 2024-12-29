@@ -6,16 +6,17 @@
 {% endblock %}
 
 {% block title %}
-    All Posts
+    All Comments
 {% endblock %}
 
 {% block content %}
     <section class="post-list">
-        <h1>All Posts</h1>
+        <h1>All Comments</h1>
         <ul>
-            {% for post in post_list %}
-                <div  class="box-light post">
-                    {% include 'blog/includes/post_preview.html' %}
+            {% for comment in comment_list %}
+                <div class="box-light">
+                    {% include 'blog/includes/comment_preview.html' %}
+                    <p>(From {{ comment.post.title }})</p>
                 </div>
             {% endfor %}
         </ul>

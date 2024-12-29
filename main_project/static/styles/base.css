@@ -16,3 +16,7 @@ h2,
 h3 {
     color: #53a58a;
 }
+
+.content {
+    min-height: 80vh;
+}

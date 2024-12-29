@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style_links %}
+    <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Read Later
+{% endblock %}
+
+{% block content %}
+    <section class="post-list">
+        <h1>Read Later</h1>
+        {% if post_list %}
+            <ul>
+                {% for post in post_list %}
+                    <div  class="box-light post">
+                        {% include "blog/includes/post_preview.html" %}
+                        <form action="{% url 'read-later-delete' post.id %}" method="POST">
+                            {% csrf_token %}
+                            <button class="button-secondary">Remove</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="center-me">There is no post save it for you to read it later. :(</p>
+        {% endif %}
+    </section>
+{% endblock %}
+

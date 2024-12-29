@@ -48,20 +48,17 @@ class AllPostsView(ListView):
 class PostView(View):
     
     def get(self, request, slug):
-        post = Post.objects.get(slug=slug)
-        comment_list = post.comments.all().order_by("-id")
+        context = self.create_default_context(request, slug)
+        context['comment_form'] = CommentForm()
         
-        return render(request, 'blog/post.html', {
-            'comment_form': CommentForm(),
-            'post': post,
-            'post_tags': post.tags.all(),
-            'comment_list': comment_list
-        })
+        return render(request, 'blog/post.html', context)
         
     def post(self, request, slug):
+        context = self.create_default_context(request, slug)
+        post = context.get('post')
+        
         comment_form = CommentForm(request.POST)
-        post = Post.objects.get(slug=slug)
-        comment_list = post.comments.all().order_by("-id")
+        context['comment_form'] = comment_form
         
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -71,13 +68,76 @@ class PostView(View):
             return HttpResponseRedirect(reverse('post', args=[slug]))
         
         # Esse return ocorre apenas se o comentário inserido for inválido.
-        return render(request, 'blog/post.html', {
-            'comment_form': comment_form,
+        return render(request, 'blog/post.html', context)
+        
+    def create_default_context(self, request, slug):
+        post = Post.objects.get(slug=slug)
+        comment_list = post.comments.all().order_by("-id")
+        
+        read_later_list = request.session.get('read-later-list')
+        read_later = read_later_list is not None and post.id in read_later_list
+        
+        return {
             'post': post,
             'post_tags': post.tags.all(),
-            'comment_list': comment_list
-        })
+            'comment_list': comment_list,
+            'read_later': read_later
+        }
+    
 
+class AllCommentsView(ListView):
+    template_name = 'blog/comments.html'
+    model = Comment
+    context_object_name = 'comment_list'
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-id')
+
+
+class ReadLaterPostView(View):
+    def get(self, request):
+        read_later_list = request.session.get('read-later-list')
+        post_list = []
+        
+        if read_later_list is not None:
+            post_list = Post.objects.filter(id__in=read_later_list)
+            
+        return render(request, 'blog/read_later.html', {
+            'post_list': post_list
+        })
+        
+    def post(self, request):
+        post_id = request.POST.get('post_id', 0)
+        
+        if post_id:
+            post_id = int(post_id)
+            
+            read_later_list = request.session.get('read-later-list')
+            
+            if read_later_list is None:
+                read_later_list = []
+            
+            if post_id not in read_later_list:
+                read_later_list.append(post_id)
+                
+            request.session['read-later-list'] = read_later_list
+            
+        return HttpResponseRedirect(reverse('blog-home'))
+
+
+class RemoveReadLaterView(View):
+    def post(self, request, id):
+        read_later_list = request.session.get('read-later-list')
+        
+        if read_later_list is not None and id in read_later_list:
+            read_later_list.remove(id)
+            
+        request.session['read-later-list'] = read_later_list
+            
+        return HttpResponseRedirect(reverse('read-later'))
+
+    
 # def index(request):
 #     post_list = []
     

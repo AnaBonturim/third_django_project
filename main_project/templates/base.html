@@ -19,10 +19,13 @@
         <h1><a href="{% url 'blog-home' %}"><img id="logo-img" src="{% static 'images/logo.svg' %}" /></a></h1>
         <nav>
             <a href="{% url 'all-posts' %}">All Posts</a>
+            <a href="{% url 'all-comments' %}">All Comments</a>
+            <a href="{% url 'read-later' %}">Read Later</a>
         </nav>
     </header>
-    {% block content %}<h1>Olá</h1>{% endblock %}
-
+    <div class='content'>
+        {% block content %}<h1>Olá</h1>{% endblock %}
+    </div>
     <section id="about">
         <h2>About Me</h2>
         <p>I have nothing to say about me.</p>

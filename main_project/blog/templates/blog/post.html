@@ -32,6 +32,15 @@
         {% if post.has_tags %}
             <div class="post-tags">With tags {% for tag in post.tags_as_list %} <span class="tag-span"> {{ tag.caption }} </span> {% endfor %}</div>
         {% endif %}
+        <div>
+            {% if read_later is False %}
+                <form method="POST" action="{% url 'read-later'%}">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ post.id }}" name="post_id" />
+                    <button class="button-secondary">Read later</button>
+                </form>
+            {% endif %}
+        </div>
     </section>
 
     <hr>
@@ -48,7 +57,7 @@
                         {{ field.errors}}
                     </div>
                 {% endfor %}
-                <button>Comment</button>
+                <button class="button-primary">Comment</button>
             </form>
         </div>
     </section>
@@ -61,7 +70,7 @@
         {% if comment_list %}
             {% for comment in comment_list %}
                 <div class="box-light">
-                    {% include 'blog/includes/comment.html' with comment=comment %}
+                    {% include 'blog/includes/comment_preview.html' %}
                 </div>
             {% endfor %}
         {% else %}
