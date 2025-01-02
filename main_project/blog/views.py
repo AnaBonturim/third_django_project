@@ -120,6 +120,8 @@ class ReadLaterPostView(View):
             
             if post_id not in read_later_list:
                 read_later_list.append(post_id)
+            else:
+                read_later_list.remove(post_id)
                 
             request.session['read-later-list'] = read_later_list
             
