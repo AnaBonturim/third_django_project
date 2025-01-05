@@ -1,0 +1,239 @@
+body {
+    background-color: #f6fffc;
+}
+
+hr {
+    border: 0px;
+    border-bottom: 1px dashed #1a58446b;
+}
+
+li {
+    list-style: none;
+}
+
+
+.box-light {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 30rem;
+    box-shadow: 0 2px 8px #00000042;
+    padding: 1rem;
+    border-radius: 12px;
+    /* height: 17rem; */
+    background-color: #fff;
+}
+
+.post {
+    max-width: 50rem;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: #53a58a;
+}
+
+.post-title a:hover,
+.post-title a:active {
+    color: #1a5844;
+    font-weight: bold;
+}
+
+.post-time {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #53a58a;
+}
+
+.post-address {
+    font-size: 0.75rem;
+    font-style: bold;
+}
+
+.full-post {
+    padding: 1rem;
+}
+
+.excerpt {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #53a58a;
+}
+ 
+.post-list h1 {
+    text-align: center;
+}
+
+.post-avatar {
+    width: 6rem;
+    height: 6rem;
+}
+
+.post-preview-avatar {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 3rem;
+    max-height: 3rem;
+    margin: 0 auto;
+}
+
+.post-preview-time {
+    margin-top: 1.5rem;
+    font-size: 0.65rem;
+    font-style: italic;
+    color: #53a58a;
+}
+
+.post-preview-address {
+    font-size: 0.65rem;
+    font-style: bold;
+}
+
+.post-preview {
+    padding-top: 1rem;
+}
+
+.post-tags {
+    padding: 0.25em 0;
+    font-size: 0.65rem;
+}
+
+.center-me {
+    text-align: center;
+}
+
+.button-primary {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    background-color: #3e9979;
+    color: #fff;
+    border: 0px;
+}
+
+.button-primary:hover,
+.button-primary:active {
+    background-color: #2e6e58;
+}
+
+.button-secondary {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #2e6e58;
+    border: 1px solid #2e6e58;
+}
+
+.button-secondary:hover,
+.button-secondary:active {
+    background-color: #2e6e58;
+    color: #fff;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+}
+
+.form-control input, .form-control textarea {
+    font: inherit;
+    border: #e3e3e3 solid 1px;
+    padding: 0.35rem;
+    border-radius: 0.25rem;
+    margin: 0.25rem;
+}
+
+.form-control input:focus, .form-control textarea:focus {
+    outline-color: #53a58a;
+}
+
+.form-control label {
+    font-weight: bold;
+    display: block;
+    color: #53a58a;
+    /* margin-bottom: 0.25rem; */
+}
+
+.comment-section {
+    padding: 0.5rem;
+}
+
+/* errorList é uma classe interna */
+.errorlist {
+    list-style: none;
+    margin: 0.5rem 0;
+    padding: 0;
+    color: #e95151;
+}
+
+.error-form input, .error-form textarea {
+    border-color: #e95151;
+    background-color: #fadbdb;
+}
+
+.error-form label, .error-form textarea {
+    color: #e95151;
+}
+
+.error-box {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    border: #e95151 solid 1px;
+    background-color: #fadbdb;
+    max-width: 30rem;
+}
+
+.error-box * {
+    color: #e95151;
+}
+
+.error-box a {
+    background-color: #e95151;
+    padding: 0.25rem 1rem;
+    margin: 0.75rem 0 1rem 0;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+}
+
+span.tag-span {
+    background-color: #b0e6d477;
+    padding: 0.2em;
+    margin: 0 0.2em;
+    border-radius: 0.3em;
+}
+
+#welcome-block {
+    color: #53a58a;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+#welcome-block h1 {
+    font-size: 2rem;
+}
+
+#welcome-block p {
+    font-style: italic;
+}
+
+#about {
+    color: #856b47;
+    text-align: center;
+    padding: 0.5rem 0;
+    background-color: #fff5e7;
+    border-top:#856b47 dashed 1px;
+}
+
+#about h2 {
+    color:#856b47;
+}

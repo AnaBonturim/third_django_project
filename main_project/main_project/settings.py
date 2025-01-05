@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1zz+_&q(js0m_f+a1a&(2+*vo8rb%h*bqkvfe8i5ut2ayijf4%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -117,6 +117,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+# Depois de definir o STATIC_ROOT, é necessário executar o comando: python.exe .\manage.py collectstatic
+# Sempre que você alterar os arquivos estáticos do projeto, é necessário executar esse comando para atualizar a pasta de arquivos estáticos.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = 'static/'
 

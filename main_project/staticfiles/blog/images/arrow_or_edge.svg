@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="24px"
+   viewBox="0 -960 960 960"
+   width="24px"
+   fill="#5f6368"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="arrow_or_edge.svg"
+   inkscape:export-filename="arrow_or_edge.png"
+   inkscape:export-xdpi="960"
+   inkscape:export-ydpi="960"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="37.416667"
+     inkscape:cx="12"
+     inkscape:cy="12"
+     inkscape:window-width="2160"
+     inkscape:window-height="1136"
+     inkscape:window-x="1221"
+     inkscape:window-y="-7"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="M300-120 140-280l56-56 64 63v-247H120q-33 0-56.5-23.5T40-600v-240h80v240h140q33 0 56.5 23.5T340-520v247l63-63 57 56-160 160Zm360 0L500-280l56-56 64 63v-247q0-33 23.5-56.5T700-600h140v-240h80v240q0 33-23.5 56.5T840-520H700v248l63-64 57 56-160 160Z"
+     id="path1" />
+</svg>
